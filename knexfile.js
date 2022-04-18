@@ -8,9 +8,9 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: 'postgres://localhost/simple-fullstack',
+    connection: 'postgres://localhost/simpleFullstack',
     migrations: {
-      directory: './data./migrations',
+      directory: './data/migrations',
     },
     seeds: {
       directory: './data/seeds',
