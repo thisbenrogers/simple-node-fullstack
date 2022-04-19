@@ -8,6 +8,7 @@ module.exports = (req, res, next) => {
     const secret = process.env.JWT_SECRET || "A myth about secrets...";
 
     jwt.verify(token, secret, (err, decodedToken) => {
+      console.log('error in jwt.verify: ', err)
       if (err) {
         res.status(401).json({ message:"Invalid credentials" });
       } else {
