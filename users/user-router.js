@@ -15,13 +15,13 @@ router.get('/', restricted, (_, res) => {
 router.get('/:id', restricted, (req, res) => {
   const id = req.params.id;
   if (!id) {
-    res.status(404).json({ message: "The user with th specified id does not exist." });
+    res.status(404).json({ message: "The user with the specified id does not exist." });
   } else {
     Users.findById(id)
       .then(user => {
         res.status(201).json(user)
       })
-      .cathc(err => {
+      .catch(err => {
         res.status(500).json({ message: 'The user information could not be retrieved.', error: err });
       })
   }
