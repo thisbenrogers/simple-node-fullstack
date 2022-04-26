@@ -15,12 +15,7 @@ module.exports = {
     seeds: {
       directory: './data/seeds',
     },
-    pool: {
-      min: 2,
-      max: 10
-    },
   },
-
 
   production: {
     client: 'pg',
@@ -31,9 +26,17 @@ module.exports = {
     migrations: {
       directory: './data/migrations',
     },
-    pool: {
-      min: 2,
-      max: 10
+  },
+
+  testing: {
+    client: 'postgres',
+    debug: true,
+    connection: 'postgres://localhost/testingSimpleFullstack',
+    migrations: {
+      directory: './data/migrations',
+    },
+    seeds: {
+      directory: './data/seeds',
     },
   }
 

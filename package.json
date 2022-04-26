@@ -6,7 +6,8 @@
   "scripts": {
     "server": "nodemon",
     "start": "node index.js",
-    "test": "cross-env DB_ENV=testing jest --watch"
+    "test": "cross-env DB_ENV=testing NODE_ENV=testing jest --watch",
+    "migrations:test": "npx knex migrate:latest"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/thisbenrogers/simple-node-fullstack#readme",
   "dependencies": {
+    "@databases/pg-test": "^3.1.2",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
@@ -35,5 +37,18 @@
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2"
+  },
+  "jest": {
+    "globalSetup": "./node_modules/@databases/pg-test/jest/globalSetup",
+    "globalTeardown": "./node_modules/@databases/pg-test/jest/globalTeardown"
+  },
+  "pg": {
+    "test": {
+      "migrationsScript": [
+        "npm",
+        "run",
+        "migrations:test"
+      ]
+    }
   }
 }
