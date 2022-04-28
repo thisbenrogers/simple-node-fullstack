@@ -21,7 +21,6 @@ router.post('/', (req, res) => {
         res.status(201).json({ id: saved.id, username: saved.username, token: token });
       })
       .catch(error => {
-        console.log('user not added: ', error)
         res.status(500).json(error);
       })
   } else {
